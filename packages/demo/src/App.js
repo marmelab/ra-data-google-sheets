@@ -5,6 +5,7 @@ import { googleSheetsDataProvider } from 'ra-data-google-sheets';
 
 import { authProvider } from './authProvider';
 import { devs } from './devs';
+import { projects } from './projects';
 
 const dataProvider = googleSheetsDataProvider();
 
@@ -18,6 +19,7 @@ const App = () => {
             </Helmet>
             <Admin authProvider={authProvider} dataProvider={dataProvider}>
                 <Resource name="devs" {...devs} />
+                <Resource name="projects" {...projects} />
             </Admin>
         </>
     );
