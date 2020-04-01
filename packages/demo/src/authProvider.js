@@ -1,17 +1,17 @@
 // Authenticatd by default
-export default {
+export const authProvider = {
     login: ({ username, password }) => {
-        if (username === 'login' && password === 'password') {
+        if (username === 'login' && password === 'secret') {
             localStorage.removeItem('not_authenticated');
             localStorage.removeItem('role');
             return Promise.resolve();
         }
-        if (username === 'user' && password === 'password') {
+        if (username === 'user' && password === 'secret') {
             localStorage.setItem('role', 'user');
             localStorage.removeItem('not_authenticated');
             return Promise.resolve();
         }
-        if (username === 'admin' && password === 'password') {
+        if (username === 'admin' && password === 'secret') {
             localStorage.setItem('role', 'admin');
             localStorage.removeItem('not_authenticated');
             return Promise.resolve();
