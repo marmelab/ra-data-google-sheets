@@ -2,19 +2,22 @@
 
 ## Features
 
-- [ ] Basic bootstrap
-- [ ] List
-- [ ] Edit
-- [ ] Create
+- [x] Basic bootstrap
+- [x] Basic List
+- [ ] Basic Edit
+- [ ] Basic Create
+- [ ] Advanced List (filter, sort)
 - [ ] References
 - [ ] Generate the resources
-- [ ] Improve configuration (google api key)
+- [x] Use the Google API package
+- [ ] Improve the config management
 - [ ] Setup Google authentication
 
 ## Tests and Development
 
-- [ ] Migrate to Typescript?
 - [ ] Setup Travis (requires to open the sources before)
+- [ ] Migrate to Typescript?
+- [ ] Create a mocked server?
 
 ## Open the sources
 
