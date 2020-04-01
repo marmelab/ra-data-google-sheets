@@ -30,3 +30,5 @@ export const processSheet = sheet => {
         total: processedData.length,
     };
 };
+
+export const getSheetByResource = (resource, sheets) => {};
