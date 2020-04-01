@@ -1,14 +1,14 @@
 {
     "private": true,
-    "name": "ra-data-google-sheet",
+    "name": "ra-data-google-sheets",
     "scripts": {
         "build": "yarn build-lib && yarn build-mock",
-        "build-lib": "cd packages/ra-data-google-sheet && yarn build",
+        "build-lib": "cd packages/ra-data-google-sheets && yarn build",
         "build-demo": "cd packages/demo && yarn build",
         "start": "concurrently \"yarn start-lib\" \"yarn start-demo\"",
-        "start-lib": "cd packages/ra-data-google-sheet && yarn dev",
+        "start-lib": "cd packages/ra-data-google-sheets && yarn dev",
         "start-demo": "cd packages/demo && yarn start",
-        "test": "cd packages/ra-data-google-sheet && yarn test",
+        "test": "cd packages/ra-data-google-sheets && yarn test",
         "lint": "eslint --fix ."
     },
     "workspaces": [
