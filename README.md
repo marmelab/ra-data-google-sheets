@@ -1,4 +1,4 @@
-# Google Sheet Data Provider for React Admin
+# Google Sheets Data Provider for React Admin
 
 ## Development
 

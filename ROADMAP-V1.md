@@ -1,4 +1,4 @@
-# Roadmap to ra-data-google-sheet v1.0
+# Roadmap to ra-data-google-sheets v1.0
 
 ## Features
 
@@ -12,6 +12,7 @@
 - [x] Use the Google API package
 - [ ] Improve the config management
 - [ ] Setup Google authentication
+- [ ] Create special Guessers based on Google Sheets format?
 
 ## Tests and Development
 

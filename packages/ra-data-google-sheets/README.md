@@ -1,1 +1,1 @@
-# Google Sheet Data Provider
+# Google Sheets Data Provider
