@@ -1,34 +1,19 @@
-const processRowHeader = headerRow => {
-    return headerRow.map(value => value.formattedValue);
-};
-
 const processRow = (headers, row) => {
     return row.reduce((acc, cur, index) => {
-        acc[headers[index]] = cur.formattedValue;
+        acc[headers[index]] = cur;
         return acc;
     }, {});
 };
 
-const processRows = ([headerRow, ...otherRows]) => {
-    const headers = processRowHeader(headerRow.values);
-    const rows = otherRows.map(row => row.values);
-
+const processRows = ([headers, ...rows]) => {
     return rows.map(row => processRow(headers, row));
 };
 
-export const processSheet = sheet => {
-    const {
-        properties: { title: resource },
-        data,
-    } = sheet;
-
-    const processedData = processRows(data[0].rowData);
+export const processSheet = rows => {
+    const processedData = processRows(rows);
 
     return {
-        resource,
         data: processedData,
         total: processedData.length,
     };
 };
-
-export const getSheetByResource = (resource, sheets) => {};
