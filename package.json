@@ -2,7 +2,7 @@
     "private": true,
     "name": "ra-data-google-sheets",
     "scripts": {
-        "build": "yarn build-lib && yarn build-mock",
+        "build": "yarn build-lib",
         "build-lib": "cd packages/ra-data-google-sheets && yarn build",
         "build-demo": "cd packages/demo && yarn build",
         "start": "concurrently \"yarn start-lib\" \"yarn start-demo\"",
