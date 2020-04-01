@@ -7,6 +7,7 @@
 - [ ] Edit
 - [ ] Create
 - [ ] References
+- [ ] Generate the resources
 - [ ] Improve configuration (google api key)
 - [ ] Setup Google authentication
 
