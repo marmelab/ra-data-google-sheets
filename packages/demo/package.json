@@ -11,7 +11,7 @@
         "serve": "serve -s build"
     },
     "dependencies": {
-        "ra-data-google-sheet": "1.0.0",
+        "ra-data-google-sheets": "~1.0.0",
         "ra-i18n-polyglot": "~3.3.3",
         "ra-language-english": "~3.2.0",
         "react": "~16.13.0",
