@@ -1,0 +1,46 @@
+dist: trusty
+language: node_js
+node_js:
+    - 'lts/*'
+addons:
+    chrome: stable
+env:
+    global:
+        - NODE_ENV=test
+branches:
+    only:
+        - master
+
+before_install:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - source ~/.bashrc
+
+install: make install
+
+cache:
+    yarn: true
+    directories:
+        - ~/.cache
+
+script: make test
+
+stages:
+    - name: test
+    - name: deploy
+      if: branch = master
+
+jobs:
+    include:
+        - stage: test
+          name: Units tests
+          env: NODE_ENV=test
+        - stage: deploy
+          name: Deploy
+          script: skip
+          before_deploy:
+              - pip install --user awscli
+              - export PATH=$PATH:$HOME/.local/bin
+          deploy:
+              skip_cleanup: true
+              provider: script
+              script: DEPLOY_ENV=integration NODE_ENV=production make deploy

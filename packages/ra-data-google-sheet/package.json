@@ -1,0 +1,27 @@
+{
+    "name": "ra-data-google-sheet",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "module": "esm/index.js",
+    "sideEffects": false,
+    "scripts": {
+        "build": "yarn run build-cjs && yarn run build-esm",
+        "build-cjs": "rimraf ./lib && tsc",
+        "build-esm": "rimraf ./esm && tsc --outDir esm --module es2015",
+        "dev": "tsc --incremental --watch --outDir esm --module es2015",
+        "test": "kcd-scripts test"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "kcd-scripts": "~5.0.0",
+        "react-scripts": "~3.2.0",
+        "rimraf": "~3.0.2",
+        "typescript": "~3.7.5"
+    },
+    "files": [
+        "*.md",
+        "lib",
+        "esm",
+        "src"
+    ]
+}

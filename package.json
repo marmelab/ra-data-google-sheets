@@ -1,0 +1,26 @@
+{
+    "private": true,
+    "name": "ra-data-google-sheet",
+    "scripts": {
+        "build": "yarn build-lib && yarn build-mock",
+        "build-lib": "cd packages/ra-data-google-sheet && yarn build",
+        "build-demo": "cd packages/demo && yarn build",
+        "start": "concurrently \"yarn start-lib\" \"yarn start-demo\"",
+        "start-lib": "cd packages/ra-data-google-sheet && yarn dev",
+        "start-demo": "cd packages/demo && yarn start",
+        "test": "cd packages/ra-data-google-sheet && yarn test",
+        "lint": "eslint --fix ."
+    },
+    "workspaces": [
+        "packages/*"
+    ],
+    "devDependencies": {
+        "concurrently": "~5.1.0",
+        "eslint": "~6.8.0",
+        "eslint-config-prettier": "~6.10.0",
+        "eslint-plugin-prettier": "~3.1.2",
+        "husky": "~4.2.3",
+        "lint-staged": "~10.0.7",
+        "prettier": "~1.19.1"
+    }
+}
