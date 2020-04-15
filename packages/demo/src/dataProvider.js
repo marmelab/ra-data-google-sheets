@@ -1,4 +1,7 @@
-import { googleSheetsDataProvider } from 'ra-data-google-sheets';
+import {
+    googleSheetsDataProvider,
+    googleFormDataProvider,
+} from 'ra-data-google-sheets';
 
 const resourcesMap = {
     devs: googleSheetsDataProvider(
@@ -7,7 +10,7 @@ const resourcesMap = {
     projects: googleSheetsDataProvider(
         '1cagTLWhyPnlFpgCcu19W4O0wBCzXxEyDb5yBK_jg-PU'
     ),
-    answers: googleSheetsDataProvider(
+    answers: googleFormDataProvider(
         '1NY8Og8RLMWyEzC9fyZxF2Q5_rwQoJg_sgU-PTJtM_Xk'
     ),
 };
