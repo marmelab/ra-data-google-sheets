@@ -4,18 +4,20 @@
 
 - [x] Basic bootstrap
 - [x] Basic List
-- [ ] Basic Edit
-- [ ] Basic Create
+- [x] Basic Edit
+- [x] Basic Create
 - [ ] Advanced List (filter, sort)
 - [ ] References
+- [ ] Dynamic Google SpreadSheets
 - [ ] Generate the resources
 - [x] Use the Google API package
 - [ ] Improve the config management
-- [ ] Setup Google authentication
+- [x] Setup Google authentication
 - [ ] Create special Guessers based on Google Sheets format?
 
 ## Tests and Development
 
+- [ ] Explain how to setup the project
 - [ ] Setup Travis (requires to open the sources before)
 - [ ] Migrate to Typescript?
 - [ ] Create a mocked server?
