@@ -17,7 +17,16 @@ export const googleSheetsDataProvider = () => {
 
             return processSheet(response.result.values);
         },
-        getMany: () => Promise.resolve(null),
+        getMany: async resource => {
+            const response = await window.gapi.client.sheets.spreadsheets.values.get(
+                {
+                    spreadsheetId: GOOGLE_SHEETS_DOC_ID,
+                    range: `${resource}!A:Z`,
+                }
+            );
+
+            return processSheet(response.result.values);
+        },
         getManyReference: () => Promise.resolve(null),
         getOne: () => Promise.resolve(null),
         update: () => Promise.resolve(null),
