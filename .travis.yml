@@ -34,13 +34,3 @@ jobs:
         - stage: test
           name: Units tests
           env: NODE_ENV=test
-        - stage: deploy
-          name: Deploy
-          script: skip
-          before_deploy:
-              - pip install --user awscli
-              - export PATH=$PATH:$HOME/.local/bin
-          deploy:
-              skip_cleanup: true
-              provider: script
-              script: DEPLOY_ENV=integration NODE_ENV=production make deploy
