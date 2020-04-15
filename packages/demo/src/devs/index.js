@@ -1,5 +1,5 @@
-import { ListGuesser } from 'react-admin';
+import { DevList } from './DevList';
 
 export const devs = {
-    list: ListGuesser,
+    list: DevList,
 };
