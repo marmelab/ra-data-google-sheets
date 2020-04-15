@@ -1,9 +1,7 @@
 import { processSheet, processRow } from './formatDataForReactAdmin';
 import { processForm } from './formatDataForGoogleSheets';
 
-export const googleSheetsDataProvider = (
-    spreadsheetId = '1cagTLWhyPnlFpgCcu19W4O0wBCzXxEyDb5yBK_jg-PU'
-) => {
+export const googleSheetsDataProvider = spreadsheetId => {
     const getResourceRows = async resource => {
         const response = await window.gapi.client.sheets.spreadsheets.values.get(
             {
