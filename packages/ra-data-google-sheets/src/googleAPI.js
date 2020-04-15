@@ -1,5 +1,5 @@
 const GOOGLE_API_SCRIPT = 'https://apis.google.com/js/api.js';
-const SCOPE = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 const DISCOVERY_DOCS = [
     'https://sheets.googleapis.com/$discovery/rest?version=v4',
 ];
