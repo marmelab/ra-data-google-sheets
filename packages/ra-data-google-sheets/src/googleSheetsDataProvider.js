@@ -61,14 +61,45 @@ export const googleSheetsDataProvider = spreadsheetId => {
     };
 
     const updateResourceRow = async (resource, id, row) => {
-        const rowNumber = parseInt(id, 10) + 1;
+        const rowNumberInRange = parseInt(id, 10) + 1; // Starts at 1
 
         return await window.gapi.client.sheets.spreadsheets.values.update({
             spreadsheetId,
-            range: `${resource}!A${rowNumber}`,
+            range: `${resource}!A${rowNumberInRange}`,
             valueInputOption: 'USER_ENTERED',
             resource: {
                 values: row,
+            },
+        });
+    };
+
+    const deleteResourceRow = async (resource, id) => {
+        const {
+            result: { sheets },
+        } = await window.gapi.client.sheets.spreadsheets.get({
+            spreadsheetId,
+        });
+
+        const rowNumber = parseInt(id, 10);
+        const sheetId = sheets.find(
+            sheet => sheet.properties.title === resource
+        ).properties.sheetId;
+
+        return window.gapi.client.sheets.spreadsheets.batchUpdate({
+            spreadsheetId,
+            resource: {
+                requests: [
+                    {
+                        deleteDimension: {
+                            range: {
+                                sheetId,
+                                startIndex: rowNumber,
+                                endIndex: rowNumber + 1,
+                                dimension: 'ROWS',
+                            },
+                        },
+                    },
+                ],
             },
         });
     };
@@ -87,7 +118,11 @@ export const googleSheetsDataProvider = spreadsheetId => {
                 data: { ...formData, id: newId },
             };
         },
-        delete: () => Promise.resolve(null),
+        delete: async (resource, { id }) => {
+            const res = await deleteResourceRow(resource, id);
+            console.log(res);
+            return { data: null };
+        },
         deleteMany: () => Promise.resolve(null),
         getList: async resource => {
             const result = await getResourceRows(resource);
