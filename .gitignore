@@ -27,4 +27,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 # config
+packages/demo/config/config-dev.js
 packages/demo/public/config.js
