@@ -1,7 +1,7 @@
-export const processForm = (headers, newId, formData) => {
+export const processForm = (headers, id, formData) => {
     const values = headers.map(header => {
         if (header === 'id') {
-            return newId;
+            return id;
         }
         return formData[header] || '';
     });

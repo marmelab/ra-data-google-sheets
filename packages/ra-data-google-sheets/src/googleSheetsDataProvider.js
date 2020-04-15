@@ -1,4 +1,4 @@
-import { processSheet } from './formatDataForReactAdmin';
+import { processSheet, processRow } from './formatDataForReactAdmin';
 import { processForm } from './formatDataForGoogleSheets';
 
 const GOOGLE_SHEETS_DOC_ID = '1cagTLWhyPnlFpgCcu19W4O0wBCzXxEyDb5yBK_jg-PU';
@@ -6,7 +6,7 @@ const GOOGLE_SHEETS_DOC_ID = '1cagTLWhyPnlFpgCcu19W4O0wBCzXxEyDb5yBK_jg-PU';
 const getResourceRows = async resource => {
     const response = await window.gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: GOOGLE_SHEETS_DOC_ID,
-        range: `${resource}!A:Z`,
+        range: `${resource}`,
     });
 
     return processSheet(response.result.values);
@@ -30,13 +30,38 @@ const countResourceRows = async resource => {
     return processSheet(response.result.values).total;
 };
 
-const appendResourceRows = async (resource, rows) => {
+const appendResourceRow = async (resource, row) => {
     return await window.gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: GOOGLE_SHEETS_DOC_ID,
-        range: `${resource}!A1`,
-        valueInputOption: 'RAW',
+        range: `${resource}!A1`, // Automatically added at the end
+        valueInputOption: 'USER_ENTERED',
         resource: {
-            values: rows,
+            values: row,
+        },
+    });
+};
+
+const getResourceRow = async (resource, id) => {
+    const headers = await getResourceHeaders(resource);
+    const rowNumber = parseInt(id, 10) + 1;
+
+    const response = await window.gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: GOOGLE_SHEETS_DOC_ID,
+        range: `${resource}!A${rowNumber}:Z${rowNumber}`,
+    });
+
+    return processRow(headers, response.result.values);
+};
+
+const updateResourceRow = async (resource, id, row) => {
+    const rowNumber = parseInt(id, 10) + 1;
+
+    return await window.gapi.client.sheets.spreadsheets.values.update({
+        spreadsheetId: GOOGLE_SHEETS_DOC_ID,
+        range: `${resource}!A${rowNumber}`,
+        valueInputOption: 'USER_ENTERED',
+        resource: {
+            values: row,
         },
     });
 };
@@ -50,7 +75,7 @@ export const googleSheetsDataProvider = () => {
             const newId = total + 1; // Auto-Increment
             const values = processForm(headers, newId, formData);
 
-            await appendResourceRows(resource, values);
+            await appendResourceRow(resource, values);
 
             return {
                 data: { ...formData, id: newId },
@@ -75,8 +100,24 @@ export const googleSheetsDataProvider = () => {
             };
         },
         getManyReference: () => Promise.resolve(null),
-        getOne: () => Promise.resolve(null),
-        update: () => Promise.resolve(null),
+        getOne: async (resource, { id }) => {
+            const result = await getResourceRow(resource, id);
+
+            return {
+                data: { id, ...result },
+            };
+        },
+        update: async (resource, { id, data: formData }) => {
+            const headers = await getResourceHeaders(resource);
+
+            const values = processForm(headers, id, formData);
+
+            await updateResourceRow(resource, id, values);
+
+            return {
+                data: { ...formData, id },
+            };
+        },
         updateMany: () => Promise.resolve(null),
     };
 };

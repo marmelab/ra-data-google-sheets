@@ -1,4 +1,4 @@
-const processRow = (headers, row) => {
+export const processRow = (headers, row) => {
     return row.reduce((acc, cur, index) => {
         acc[headers[index]] = cur;
         return acc;
