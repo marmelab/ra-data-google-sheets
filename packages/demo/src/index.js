@@ -6,7 +6,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-loadGoogleApi({ apiKey: window.CONFIG.GOOGLE_SHEETS_API_KEY }).then(() => {
+loadGoogleApi({
+    apiKey: window.CONFIG.GOOGLE_SHEETS_API_KEY,
+    clientId: window.CONFIG.GOOGLE_SHEETS_CLIENT_ID,
+}).then(() => {
     console.log('Google API Loaded');
 
     ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,12 +1,15 @@
 import React from 'react';
 import { Admin, Resource } from 'react-admin';
 import { Helmet } from 'react-helmet';
-import { googleSheetsDataProvider } from 'ra-data-google-sheets';
+import {
+    googleAPIAuthProvider,
+    googleSheetsDataProvider,
+} from 'ra-data-google-sheets';
 
-import { authProvider } from './authProvider';
 import { devs } from './devs';
 import { projects } from './projects';
 
+const authProvider = googleAPIAuthProvider();
 const dataProvider = googleSheetsDataProvider();
 
 const App = () => {

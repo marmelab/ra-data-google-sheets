@@ -12,18 +12,50 @@ const createGoogleApiScript = onload => {
     document.body.appendChild(script);
 };
 
-export const loadGoogleApi = ({ apiKey }) => {
+const loadClient = credentials => {
     return new Promise(resolve => {
         createGoogleApiScript(() => {
-            window.gapi.load('client', () => {
-                resolve();
+            window.gapi.load('client:auth2', () => {
+                resolve(credentials);
             });
         });
-    }).then(() => {
-        return window.gapi.client.init({
-            apiKey,
-            scope: SCOPE,
-            discoveryDocs: DISCOVERY_DOCS,
-        });
     });
+};
+
+const initClient = ({ apiKey, clientId }) => {
+    return window.gapi.client.init({
+        apiKey,
+        clientId,
+        scope: SCOPE,
+        discoveryDocs: DISCOVERY_DOCS,
+    });
+};
+
+export const loadGoogleApi = credentials => {
+    return loadClient(credentials).then(initClient);
+};
+
+export const login = () => {
+    return new Promise((resolve, reject) => {
+        const auth2Instance = window.gapi.auth2.getAuthInstance();
+        if (auth2Instance.isSignedIn.get()) {
+            resolve();
+            return;
+        }
+
+        auth2Instance.isSignedIn.listen(() => {
+            if (auth2Instance.isSignedIn.get()) {
+                resolve();
+            } else {
+                reject();
+            }
+        });
+
+        window.gapi.auth2.getAuthInstance().signIn();
+    });
+};
+
+export const logout = () => {
+    window.gapi.auth2.getAuthInstance().signOut();
+    return Promise.resolve();
 };
