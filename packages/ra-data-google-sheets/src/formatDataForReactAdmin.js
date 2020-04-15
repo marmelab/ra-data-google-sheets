@@ -6,14 +6,18 @@ const processRow = (headers, row) => {
 };
 
 const processRows = ([headers, ...rows]) => {
-    return rows.map(row => processRow(headers, row));
+    return {
+        headers,
+        data: rows.map(row => processRow(headers, row)),
+    };
 };
 
 export const processSheet = rows => {
     const processedData = processRows(rows);
 
     return {
-        data: processedData,
-        total: processedData.length,
+        data: processedData.data,
+        headers: processedData.headers,
+        total: processedData.data.length,
     };
 };
