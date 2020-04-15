@@ -8,23 +8,23 @@
 - [x] Basic Create
 - [ ] Advanced List (filter, sort)
 - [ ] References
-- [ ] Dynamic Google SpreadSheets
+- [x] Configure the sheets to use
 - [ ] Generate the resources
 - [x] Use the Google API package
-- [ ] Improve the config management
 - [x] Setup Google authentication
 - [ ] Create special Guessers based on Google Sheets format?
+- [ ] Improve the config management?
 
 ## Tests and Development
 
 - [ ] Explain how to setup the project
-- [ ] Setup Travis (requires to open the sources before)
+- [x] Setup Travis (requires to open the sources before)
 - [ ] Migrate to Typescript?
 - [ ] Create a mocked server?
 
 ## Open the sources
 
-- [ ] Migrate the project to mamelab repository
-- [ ] Add License (MIT)
-- [ ] Add Authors
+- [x] Migrate the project to mamelab repository
+- [x] Add License (MIT)
+- [x] Add Authors
 - [ ] Write an article on Marmelab's blog
