@@ -5,7 +5,7 @@ export const processRow = (headers, row) => {
     }, {});
 };
 
-const processRows = ([headers, ...rows]) => {
+export const processRows = ([headers, ...rows]) => {
     return {
         headers,
         data: rows.map(row => processRow(headers, row)),

@@ -2,15 +2,33 @@ import { processSheet, processRow } from './formatDataForReactAdmin';
 import { processForm } from './formatDataForGoogleSheets';
 
 export const googleSheetsDataProvider = spreadsheetId => {
-    const getResourceRows = async resource => {
+    const getResourceRows = async (resource, params = {}) => {
         const response = await window.gapi.client.sheets.spreadsheets.values.get(
             {
                 spreadsheetId,
-                range: `${resource}`,
+                range: resource,
             }
         );
 
-        return processSheet(response.result.values);
+        const sheet = processSheet(response.result.values);
+
+        if (params && params.pagination) {
+            const { page, perPage } = params.pagination;
+            const firstLineNumber = (page - 1) * perPage;
+            const lastLineNumber = firstLineNumber + perPage;
+
+            const paginatedValues = sheet.data.slice(
+                firstLineNumber,
+                lastLineNumber
+            );
+
+            return {
+                ...sheet,
+                data: paginatedValues,
+            };
+        }
+
+        return sheet;
     };
 
     const getResourceHeaders = async resource => {
@@ -124,8 +142,8 @@ export const googleSheetsDataProvider = spreadsheetId => {
             return { data: null };
         },
         deleteMany: () => Promise.resolve(null),
-        getList: async resource => {
-            const result = await getResourceRows(resource);
+        getList: async (resource, params) => {
+            const result = await getResourceRows(resource, params);
 
             return {
                 data: result.data,
