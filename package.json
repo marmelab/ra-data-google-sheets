@@ -1,6 +1,7 @@
 {
-    "private": true,
     "name": "ra-data-google-sheets",
+    "version": "1.0.0",
+    "private": true,
     "scripts": {
         "build": "yarn build-lib",
         "build-lib": "cd packages/ra-data-google-sheets && yarn build",

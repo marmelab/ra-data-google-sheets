@@ -1,6 +1,7 @@
 {
     "name": "ra-data-google-sheets",
     "version": "1.0.0",
+    "private": false,
     "main": "lib/index.js",
     "module": "esm/index.js",
     "sideEffects": false,
