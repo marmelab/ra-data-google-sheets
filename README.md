@@ -1,11 +1,32 @@
-# Google Sheets Data Provider for React Admin
+# ra-data-google-sheets: a data provider for react-admin, based on Google Sheets
+
+<table>
+    <tr>
+        <td><img width="60" src="https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/beaker.svg" alt="hackday" /></td>
+        <td>
+            <strong>Archived Repository</strong><br />
+            The code of this repository was written during a <strong>Hack Day</strong> by a <a href="https://marmelab.com/en/jobs">marmelab developer</a>. It's part of the distributed R&D effort at marmelab, where each developer spends 2 days a month for learning and experimentation.<br />
+            <strong>This code is not intended to be used in production, and is not maintained.</strong>
+        </td>
+    </tr>
+</table>
+
+Create a Google Sheet spreadsheet, add your data and build an entire admin app on it.
+
+This module provides a [react-admin data provider](https://marmelab.com/react-admin/DataProviders.html#data-providers) and Google API helpers to work with private documents.
+
+More details are coming on [marmelab's blog](https://marmelab.com).
+
+![Screencast](./screencast.gif)
 
 ## Development
 
 **Requirements:**
 
 - Dependencies are managed by [yarn](https://yarnpkg.com/)
-- Commands are launched using make
+- Commands are launched using `make`
+
+**Setup:**
 
 Install the dependencies with:
 
@@ -13,14 +34,20 @@ Install the dependencies with:
 make install
 ```
 
-Starts the application in watch mode with:
+**Start:**
+
+Start the demo application in watch mode with:
 
 ```sh
 make start
 ```
 
-Starts the tests using:
+## Distribution
+
+**Build:**
+
+Build the library using:
 
 ```sh
-make test
+make build
 ```
