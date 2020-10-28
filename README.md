@@ -17,7 +17,7 @@ This module provides a [react-admin data provider](https://marmelab.com/react-ad
 
 More details are coming on [marmelab's blog](https://marmelab.com).
 
-![Screencast](./screencast.gif)
+![Screencast](./assets/screencast.gif)
 
 ## Development
 
@@ -41,6 +41,20 @@ Start the demo application in watch mode with:
 ```sh
 make start
 ```
+
+## Data
+
+You can find data in the `./assets/` folder to help you reproducing the demo.
+
+These data are formatted using **CSV files separated by comma**.
+
+1. Devs:
+   1. Create a first tab named `devs`
+   2. Import the content of the file `/assets/ra-data-google-sheets-devs.csv`
+
+2. Devs:
+   1. Create a second tab named `projects`
+   2. Import the content of the file `/assets/ra-data-google-sheets-projects.csv`
 
 ## Distribution
 
