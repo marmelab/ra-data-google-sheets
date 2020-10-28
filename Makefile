@@ -14,6 +14,7 @@ install: package.json ## Install dependencies
 copy-config-demo: ## Copy config of the demo. Usage DEPLOY_ENV=[dev|integration|staging] make copy-config-demo.
 	cp packages/demo/config/config-${DEPLOY_ENV}.js packages/demo/public/config.js
 
+
 #### Build ####
 
 build: ## Build the library
@@ -22,20 +23,11 @@ build: ## Build the library
 build-demo: ## Build the demo
 	@yarn build-demo
 
+
 #### Run ####
 
 start: copy-config-demo build ## Starts the application in development mode
 	@yarn start
-
-watch-lib: ## Starts the library in development mode
-	@yarn start-lib
-
-#### Tests ####
-
-test-unit: ## Runs the unit tests
-	@yarn test
-
-test: test-unit ## Runs the tests
 
 
 #### Code Formatting ####
