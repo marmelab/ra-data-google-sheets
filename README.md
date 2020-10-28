@@ -17,7 +17,7 @@ This module provides a [react-admin data provider](https://marmelab.com/react-ad
 
 More details are coming on [marmelab's blog](https://marmelab.com).
 
-![Screencast](./screencast.gif)
+![Screencast](./assets/screencast.gif)
 
 ## Development
 
